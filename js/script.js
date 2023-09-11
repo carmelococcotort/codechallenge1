@@ -1,4 +1,4 @@
-/*document.addEventListener('DOMContentLoaded', function(){
+document.addEventListener('DOMContentLoaded', function(){
 
     let sendBtn = document.getElementById('enviar');
 
@@ -22,7 +22,7 @@
         .then(response => response.json())
         .then(data => console.log(data))
     });
-})*/
+})
 //Endpoint https://crudcrud.com/api/adc54d7744e946cd8ffc1851accabb6d/grupo265
 let URL = `https://crudcrud.com/api/adc54d7744e946cd8ffc1851accabb6d/grupo265`;
 
@@ -40,12 +40,13 @@ solicitar.addEventListener('click', function(){
 })
 function showData(data){
     let contenedor = document.getElementById('lista');
+    contenedor.innerHTML = "";
     for(let one of data){
         contenedor.innerHTML += `<div class="dato" id="${one.id}"><p>Nombre:`+one.nombre+". Apellido: "+one.apellido+".</p><p>Grupo: "+one.grupo+".  Sala:"+one.sala+`.<button onclick="deleteItem(${one.id})">Delete</></p></p></div>`;
     }
 
 }
 function deleteItem(id){
-    let item = document.getElementById(`${id}`);
-    item.remove();
+    let item = document.getElementById(id);
+    item.remove();//Acá hay que cambiar por un Fetch con metodo delete para eliminar tmbn del endpoint.
 }
