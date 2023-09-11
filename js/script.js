@@ -42,11 +42,20 @@ function showData(data){
     let contenedor = document.getElementById('lista');
     contenedor.innerHTML = "";
     for(let one of data){
-        contenedor.innerHTML += `<div class="dato" id="${one.id}"><p>Nombre:`+one.nombre+". Apellido: "+one.apellido+".</p><p>Grupo: "+one.grupo+".  Sala:"+one.sala+`.<button onclick="deleteItem(${one.id})">Delete</></p></p></div>`;
+        contenedor.innerHTML += `<div class="dato" id="${one._id}"><p>Nombre:`+one.nombre+". Apellido: "+one.apellido+".</p><p>Grupo: "+one.grupo+".  Sala:"+one.sala+`.<button onclick="translateItem(${one._id.toString()})">Delete</></p></p></div>`;
     }
 
 }
-function deleteItem(id){
-    let item = document.getElementById(id);
+function translateItem(val){
+    return deleteItem(val);
+
+}
+
+function deleteItem(num){
+    let item = document.getElementById(num);
+    fetch(`https://crudcrud.com/api/adc54d7744e946cd8ffc1851accabb6d/grupo265/${num}`,{
+        method: 'DELETE'
+    })
+    .then(response=> console.log(response));
     item.remove();//Acá hay que cambiar por un Fetch con metodo delete para eliminar tmbn del endpoint.
 }
