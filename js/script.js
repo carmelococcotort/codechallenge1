@@ -37,6 +37,15 @@ solicitar.addEventListener('click', function(){
     .catch(error=>{
         console.log("Error al cargar los datos", error);
     })
-        
-    
 })
+function showData(data){
+    let contenedor = document.getElementById('lista');
+    for(let one of data){
+        contenedor.innerHTML += `<div class="dato" id="${one.id}"><p>Nombre:`+one.nombre+". Apellido: "+one.apellido+".</p><p>Grupo: "+one.grupo+".  Sala:"+one.sala+`.<button onclick="deleteItem(${one.id})">Delete</></p></p></div>`;
+    }
+
+}
+function deleteItem(id){
+    let item = document.getElementById(`${id}`);
+    item.remove();
+}
