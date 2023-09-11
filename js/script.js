@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function(){
+/*document.addEventListener('DOMContentLoaded', function(){
 
     let sendBtn = document.getElementById('enviar');
 
@@ -22,4 +22,21 @@ document.addEventListener('DOMContentLoaded', function(){
         .then(response => response.json())
         .then(data => console.log(data))
     });
+})*/
+//Endpoint https://crudcrud.com/api/adc54d7744e946cd8ffc1851accabb6d/grupo265
+let URL = `https://crudcrud.com/api/adc54d7744e946cd8ffc1851accabb6d/grupo265`;
+
+let solicitar = document.getElementById('call');
+solicitar.addEventListener('click', function(){
+    fetch(URL)
+    .then(response=> response.json())
+    .then(data=>{
+        console.log(data);
+        showData(data);
+    })
+    .catch(error=>{
+        console.log("Error al cargar los datos", error);
+    })
+        
+    
 })
