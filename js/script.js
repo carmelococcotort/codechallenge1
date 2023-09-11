@@ -42,13 +42,8 @@ function showData(data){
     let contenedor = document.getElementById('lista');
     contenedor.innerHTML = "";
     for(let one of data){
-        contenedor.innerHTML += `<div class="dato" id="${one._id}"><p>Nombre:`+one.nombre+". Apellido: "+one.apellido+".</p><p>Grupo: "+one.grupo+".  Sala:"+one.sala+`.<button onclick="translateItem(${one._id.toString()})">Delete</></p></p></div>`;
+        contenedor.innerHTML += `<div class="dato" id="${one._id}"><p>Nombre:`+one.nombre+". Apellido: "+one.apellido+".</p><p>Grupo: "+one.grupo+".  Sala:"+one.sala+`.<button onclick="deleteItem('${one._id}')">Delete</></p></p></div>`;
     }
-
-}
-function translateItem(val){
-    return deleteItem(val);
-
 }
 
 function deleteItem(num){
